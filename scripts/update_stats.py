@@ -18,13 +18,14 @@ REPO_DIR = os.path.dirname(SCRIPT_DIR)
 SVG = os.path.join(REPO_DIR, "assets", "neofetch.svg")
 USERNAME = "vrathikshenoy"
 
+# Keep each <= ~42 chars: the panel width is sized to the longest fortune.
 FORTUNES = [
     "while(alive){ learn(); build(); ship(); }",
-    "gradient descent writes programs we could never conceive.",
     "the best model is the one that ships.",
-    "attention is all you need — and a good night's sleep.",
-    "make the machine see, then make it think.",
-    "a computer that deceives you into thinking it's human. — Turing",
+    "make the machine see, then think.",
+    "attention is all you need.",
+    "ship. measure. iterate. repeat.",
+    "gradient descent, then gradient ascent.",
 ]
 
 
