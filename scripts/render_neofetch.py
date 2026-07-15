@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 """Generate the info-only neofetch panel (assets/neofetch.svg).
 
-The ASCII portrait is NOT baked in here — it lives as the animated
-assets/portrait.gif (rendered by generate_ascii.py) and sits to the LEFT of
-this panel in the README, because an animated GIF embedded inside an SVG won't
-animate when GitHub renders the SVG as an <img>.
+The ASCII portrait is NOT part of this panel — it is a separate animated SVG
+(assets/portrait.svg, rendered by render_portrait.py) shown to the LEFT of this
+panel in the README.
 
 This panel is a single self-contained SVG (no markdown code blocks => no GitHub
 'copy' buttons). Live fields carry <tspan data-k="..."> anchors so
@@ -40,17 +39,17 @@ def build_svg(stats, fortune):
 
     # (label, value, data-key) — label None = blank spacer row
     info = [
-        ("OS", 'AI.OS 2.0 "Latent Space"', None),
-        ("Host", "Computer Vision · Generative AI", None),
+        ("OS", 'Arch, Kubuntu, Windows', None),
+        ("Host", " Generative AI", None),
         ("Kernel", "6.13-neural-cuda", None),
         ("Uptime", stats["uptime"], "uptime"),
         ("Shell", "zsh · python 3.12", None),
         ("Role", "AI Engineer", None),
-        ("Editor", "Neovim · VS Code", None),
+        ("Editor", "Neovim · Zed · VS Code", None),
         (None, "", None),
-        ("Stack", "PyTorch · CUDA · OpenCV · Diffusers", None),
+        ("Stack", "PyTorch · OpenCV  · Diffusers · NextJs" , None),
         ("Focus", "Latent Diffusion · VTON · VLMs", None),
-        ("Projects", "wearify ●  ·  gemini-vton ○", None),
+        ("Projects", "wearify ● · City-360 ● · LLM-Agent ●", None),
         (None, "", None),
         ("GitHub", "github.com/vrathikshenoy", None),
         ("LinkedIn", "in/vrathik-shenoy", None),
@@ -63,7 +62,7 @@ def build_svg(stats, fortune):
     # Header
     hy = PAD + FONT
     p.append('<text class="i" x="%d" y="%d" font-weight="bold">'
-             '<tspan fill="%s">vrathik</tspan><tspan fill="%s">@aios</tspan></text>'
+             '<tspan fill="%s">vrathik</tspan><tspan fill="%s">@shenoy</tspan></text>'
              % (info_x, hy, ACCENT, CYAN))
     ends.append(info_x + 12 * CW)
     p.append('<text class="i" x="%d" y="%d" fill="%s">%s</text>' % (info_x, hy + LH, DIM, "─" * 24))
@@ -120,8 +119,8 @@ def build_svg(stats, fortune):
     style = (
         "<style>"
         "text.i{font-family:ui-monospace,'JetBrains Mono','Fira Code',Menlo,Consolas,monospace;font-size:%dpx}"
-        "@keyframes blink{0%%,50%%{opacity:1}51%%,100%%{opacity:0}}"
-        ".cur{animation:blink 1.1s infinite}"
+        "@keyframes blink{0%%,49%%{opacity:1}50%%,100%%{opacity:0}}"
+        ".cur{animation:blink 1.1s steps(1) infinite}"
         "</style>" % FONT
     )
     frame = ('<rect x="0.5" y="0.5" width="%d" height="%d" rx="12" fill="%s" stroke="%s"/>'
