@@ -1,217 +1,215 @@
 # AI.OS // Identity Terminal
 
-```
-[guest@ai-os ~]$ ./boot_system --verbose
+```console
+vrathik@aios:~$ sudo systemctl start ai.os
 ```
 
 <p align="left">
-  <img src="assets/boot.gif" alt="AI.OS Boot Sequence" width="440" />
+  <img src="assets/boot.gif" alt="AI.OS boot sequence: POST, kernel, CUDA, neural engine, system ready" width="440" />
 </p>
 
-```
-SYSTEM BOOT SUCCESSFUL.
-INITIALIZING IDENTITY DEPLOYMENT...
-```
-
-```
-[guest@ai-os ~]$ ./render_user_portrait --color=cyan
+```console
+vrathik@aios:~$ login vrathik
+Authenticating... identity verified. Rendering portrait.
 ```
 
 <p align="left">
-  <img src="assets/portrait.gif" alt="Vrathik Shenoy ASCII Portrait" width="360" style="border: 1px solid #30363d; border-radius: 4px;" />
+  <img src="assets/portrait.gif" alt="ASCII portrait of Vrathik Shenoy resolving from edge-detection to full render" width="380" />
 </p>
 
-```
-[guest@ai-os ~]$ cat identity/profile.json
+---
+
+```console
+vrathik@aios:~$ whoami
+vrathik
+
+vrathik@aios:~$ id
+uid=1000(vrathik) gid=1000(engineer) groups=1000(engineer),27(sudo),44(computer-vision),46(generative-ai),108(diffusion),120(mlops)
+
+vrathik@aios:~$ hostnamectl
+   Static hostname: aios
+         Icon name: computer-workstation
+  Operating System: AI.OS 2.0 "Latent Space"
+            Kernel: Linux 6.13-neural-cuda
+      Architecture: x86-64 · CUDA sm_90
+          Hardware: Vrathik Shenoy — AI Engineer
+             Focus: Computer Vision & Generative AI
+            Status: ● Building Wearify
+         Last Sync: <!-- SYNC_TIME_START -->System Sync: 2026-07-15 11:39:57 UTC (Active)<!-- SYNC_TIME_END -->
+
+vrathik@aios:~$ cat /etc/motd
+  Initializing Human Intelligence... loading Artificial Intelligence...
+  Welcome, Vrathik Shenoy.
+
+  Bridging cutting-edge computer vision research and production:
+  optimizing latent diffusion models, accelerating tensor
+  computations, and engineering virtual try-on ecosystems.
 ```
 
-```json
-{
-  "user": "Vrathik Shenoy",
-  "role": "AI Engineer",
-  "focus": "Computer Vision & Generative AI",
-  "stack": ["PyTorch", "CUDA", "OpenCV"],
-  "mission": "Build useful AI products",
-  "status": "Building Wearify",
-  "last_sync": "<!-- SYNC_TIME_START -->System Sync: 2026-07-15 11:28:13 UTC (Active)<!-- SYNC_TIME_END -->"
-}
+---
+
+```console
+vrathik@aios:~$ tree ~ -L 1
+/home/vrathik
+├── about/          # whoami — background & mission
+├── projects/       # systemctl status <service>
+├── research/       # journalctl --unit research
+├── startup/        # docker ps — shipping containers
+├── experiments/    # ongoing R&D
+├── github/         # htop — live system stats
+└── contact/        # cat ~/.ssh/config
+
+7 directories
 ```
 
-```
-[guest@ai-os ~]$ cat identity/mission.txt
-```
-> *Initializing Human Intelligence...*
-> *Loading Artificial Intelligence...*
-> *Welcome, Vrathik Shenoy.*
->
-> "Bridging the gap between cutting-edge computer vision research and production. Actively optimizing latent diffusion models, accelerating tensor computations, and engineering virtual try-on ecosystems."
+---
 
-```
-[guest@ai-os ~]$ ./view_radar_chart.py --skills
-```
+```console
+vrathik@aios:~$ pacman -Q | grep -E 'ml|ai|vision|gpu'
+python 3.12
+pytorch 2.5
+cuda 12.6
+opencv 4.13
+transformers 4.x
+diffusers 0.x
+triton 3.x
+nextjs 15
+docker 27
 
-```
-Computer Vision  ██████████████████████████████ 92%
-Diffusion        ████████████████████████       80%
-LLMs / VLMs      ██████████████████             60%
-Backend / MLOps  ██████████████                 50%
-AI Research      ████████████████████████       80%
-```
-
-```
-[guest@ai-os ~]$ query_neural_net --render
+vrathik@aios:~$ cat /proc/skills
+[EXPERT]    Computer Vision · PyTorch · CUDA · OpenCV
+[ADVANCED]  Latent Diffusion · Model Optimization · Python
+[LEARNING]  VLMs · Triton Kernels · MLOps · Next.js
 ```
 
-```
-   [ Input Data ]
-         ●
-         │
-         ▼
-    ●────●────●  (Preprocessing & Augmentation)
-   /     │     \
-  ▼      ▼      ▼
-  ●────●───●────●  (Vision Backbone / Feature Extractor)
-  │    \   /    │
-  │     \ /     │
-  ▼      ▼      ▼
-  ●──────●──────●  (Diffusion / VLM Alignment)
-         │
-         ▼
-  [ Featured Projects ]
+---
+
+```console
+vrathik@aios:~$ systemctl status wearify.service
+● wearify.service - Virtual Try-On Synthesis Engine
+     Loaded: loaded (/etc/systemd/system/wearify.service; enabled)
+     Active: active (running) since 2025 — production
+   Main PID: 1337 (wearify)
+      Stack: Python · PyTorch · CUDA · Next.js
+       Repo: https://github.com/vrathikshenoy/wearify
+     CGroup: /system.slice/wearify.service
+             └─ high-fidelity garment transfer onto target person models
+             └─ diffusion-based drape synthesis + body landmark alignment
+
+vrathik@aios:~$ systemctl status gemini-vton.service
+○ gemini-vton.service - Multi-modal Try-On (Gemini)
+     Loaded: loaded (/etc/systemd/system/gemini-vton.service; disabled)
+     Active: inactive (dead) — archived
+      Stack: Python · Gemini API · Bun · Tailwind
+       Repo: https://github.com/vrathikshenoy/gemini-vton
+     CGroup: agentic multimodal try-on pipeline powered by Gemini
 ```
 
-```
-[guest@ai-os ~]$ cat identity/experiments.log
+---
+
+```console
+vrathik@aios:~$ journalctl --unit research -n 5 --no-pager
+research[vton]:       drape deformation & synthesis — optimizing
+research[diffusion]:  latent diffusion — inference speed & parameter efficiency
+research[fashion]:    high-precision human parsing & body landmark alignment
+research[vit]:        attention maps in diffusion guidance
+research[multimodal]: VLM alignment for commercial usage
 ```
 
-```
-✓ Wearify (Active)
-✓ Multi-view Virtual Try-On (Research)
-✓ Vision Language Models (Fine-Tuning)
-✓ Diffusion Optimization (Triton / CUDA)
-✓ AI Startup (Incubating)
+---
+
+```console
+vrathik@aios:~$ docker ps
+CONTAINER ID   IMAGE              STATUS         PORTS      NAMES
+a1b2c3d4e5f6   wearify/api        Up 8 months    :8000      api
+f6e5d4c3b2a1   wearify/frontend   Up 8 months    :3000      frontend
+9z8y7x6w5v4u   wearify/worker     Up 8 months    (gpu)      worker
+1a2b3c4d5e6f   wearify/model      Up 8 months    :5000      model-server
 ```
 
-```
-[guest@ai-os ~]$ timeline --list --vertical
-```
+---
 
-```
-  2022 ──► Started AI Journey
-            │
-            ▼
-  2023 ──► Computer Vision Specialization
-            │
-            ▼
-  2024 ──► Deep Generative Research (Diffusion & PyTorch)
-            │
-            ▼
-  2025 ──► Wearify & VTON Engine Development
-            │
-            ▼
-  2026 ──► Scale AI Products (Active Node)
-```
-
-```
-[guest@ai-os ~]$ ls -la projects/
-```
-
-```
-total 2
-drwxr-xr-x  2 guest guest 4096 Jul 15 16:50 .
-drwxr-xr-x  6 guest guest 4096 Jul 15 16:50 ..
-
-┌──────────────────────────────────────────────────────────┐
-│ PROJECT_001 // Wearify                                   │
-├──────────────────────────────────────────────────────────┤
-│ Status     ● RUNNING (Active Production)                 │
-│ Type       Virtual Try-On System                         │
-│ Stack      Python | PyTorch | CUDA | Next.js             │
-├──────────────────────────────────────────────────────────┤
-│ High-fidelity clothing transfer from garment images      │
-│ onto target person models.                               │
-│                                                          │
-│ Repository: https://github.com/vrathikshenoy/wearify     │
-└──────────────────────────────────────────────────────────┘
-
-┌──────────────────────────────────────────────────────────┐
-│ PROJECT_002 // Gemini AI Try-On                          │
-├──────────────────────────────────────────────────────────┤
-│ Status     ● COMPLETED (Archived)                        │
-│ Type       Multi-modal Try-On Application                │
-│ Stack      Python | Gemini API | Bun | Tailwind          │
-├──────────────────────────────────────────────────────────┤
-│ Virtual try-on pipeline powered by Google Gemini         │
-│ Multimodal models and agentic workflows.                 │
-│                                                          │
-│ Repository: https://github.com/vrathikshenoy/gemini-vton │
-└──────────────────────────────────────────────────────────┘
-```
-
-```
-[guest@ai-os ~]$ sysctl -a hardware.engine
-```
-
-```
-Neural Stack
-
-Python       ██████████████████████████ 100%
-PyTorch      ██████████████████████████ 100%
-CUDA         ████████████████████       80%
-OpenCV       ██████████████████████     90%
-Transformers ████████████████           65%
-Next.js      ████████████               50%
-```
-
-```
-[guest@ai-os ~]$ top -d 1 -b --limit=5
+```console
+vrathik@aios:~$ htop
 ```
 
 <p align="left">
-  <img src="assets/ai_terminal.svg" alt="AI.OS Live System Monitor" width="440" />
+  <img src="assets/ai_terminal.svg" alt="AI.OS live system monitor showing running neural processes" width="440" />
 </p>
 
-```
-[guest@ai-os ~]$ curl -s https://api.github.com/users/vrathikshenoy/stats
-```
-
 <p align="left">
-  <img src="https://github-readme-stats.vercel.app/api?username=vrathikshenoy&show_icons=true&theme=dark&bg_color=0d1117&title_color=58a6ff&text_color=c9d1d9&icon_color=39d0ff&border_color=30363d&hide_title=false" alt="Vrathik's GitHub Stats" width="410" />
+  <img src="https://github-readme-stats.vercel.app/api?username=vrathikshenoy&show_icons=true&theme=dark&bg_color=0d1117&title_color=58a6ff&text_color=c9d1d9&icon_color=39d0ff&border_color=30363d&hide_title=false" alt="Vrathik's GitHub statistics" width="410" />
   &nbsp;&nbsp;
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=vrathikshenoy&layout=compact&theme=dark&bg_color=0d1117&title_color=58a6ff&text_color=c9d1d9&border_color=30363d" alt="Vrathik's Top Languages" width="290" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=vrathikshenoy&layout=compact&theme=dark&bg_color=0d1117&title_color=58a6ff&text_color=c9d1d9&border_color=30363d" alt="Vrathik's most used languages" width="290" />
 </p>
 
-```
-[guest@ai-os ~]$ cat research/feed.md
+---
+
+```console
+vrathik@aios:~$ git log --graph --oneline --all
+* 2026  scale ai products (HEAD -> main, active node)
+* 2025  wearify & vton engine development
+* 2024  deep generative research — diffusion & pytorch
+* 2023  computer vision specialization
+* 2022  started ai journey (root commit)
 ```
 
-```
-Latest Research Directions:
-• Virtual Try-On (VTON) — Drape deformation & synthesis.
-• Latent Diffusion Models — Parameter efficiency & inference speed.
-• Fashion AI — High-precision parsing & body landmark alignment.
-• Vision Transformers — Attention maps in diffusion guidance.
-• Multi-modal Systems — Alignment of VLMs for commercial usage.
+<p align="left">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=vrathikshenoy&theme=github-compact&bg_color=0d1117&color=58a6ff&line=39d0ff&point=a371f7&area=true&hide_border=true" alt="Vrathik's contribution activity graph" width="740" />
+</p>
+
+---
+
+```console
+vrathik@aios:~$ cat ~/.ssh/config
+Host github
+    User        vrathikshenoy
+    HostName    github.com/vrathikshenoy
+
+Host linkedin
+    HostName    linkedin.com/in/vrathik-shenoy
+
+Host email
+    HostName    shenoyvrathik@gmail.com
 ```
 
+---
+
+```console
+vrathik@aios:~$ sudo rm -rf /
+rm: it is dangerous to operate recursively on '/'
+Permission denied. Nice try :)
+
+vrathik@aios:~$ make startup
+Building MVP...       [####------] 40%
+Still debugging...    ▓▓▓▒▒▒
+make: shipping anyway.
+
+vrathik@aios:~$ ai --future
+generating................
+> Building AI products that solve real-world problems.
 ```
-[guest@ai-os ~]$ python3 -c "import life; life.run()"
+
+---
+
+```console
+vrathik@aios:~$ fortune -ai
 ```
 
 <!-- QUOTE_START -->
 ```
-"A computer would deserve to be called intelligent if it could deceive a human into believing that it was human." — Alan Turing
+"The question is not whether machines think but whether men do." — B.F. Skinner
 ```
 <!-- QUOTE_END -->
 
-```
-[guest@ai-os ~]$ exit
-logout
+```console
+vrathik@aios:~$ sudo poweroff
+[  OK  ] Stopping Neural Engine...
+[  OK  ] Saving Session State...
+[  OK  ] Unmounting /dev/vton...
+[  OK  ] Flushing tensor cache...
 
-Connection closed.
-Have a nice day, traveler.
-
-[Process completed]
+Goodbye, traveler.
 ```
 
 <p align="left">

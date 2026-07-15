@@ -24,9 +24,12 @@ def preprocess_image(img_path, target_width=75):
     top = (h - min_dim) // 2
     img_cropped = img.crop((left, top, left + min_dim, top + min_dim))
     
-    # Character aspect ratio correction (width of character is ~0.6 of height)
+    # Character aspect ratio correction: a monospace cell is ~0.55x as wide as
+    # tall, so a square image needs FEWER rows than columns (multiply, not divide)
+    # to render square instead of ~2-3x vertically stretched.
+    # ponytail: tune char_aspect if the render still looks slightly off.
     char_aspect = 0.55
-    target_height = int(target_width / char_aspect)
+    target_height = int(target_width * char_aspect)
     
     # Resize to the character grid size
     img_resized = img_cropped.resize((target_width, target_height), Image.Resampling.LANCZOS)
