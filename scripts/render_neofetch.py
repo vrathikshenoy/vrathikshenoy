@@ -120,8 +120,8 @@ def build_svg(stats, fortune):
     style = (
         "<style>"
         "text.i{font-family:ui-monospace,'JetBrains Mono','Fira Code',Menlo,Consolas,monospace;font-size:%dpx}"
-        "@keyframes blink{0%%,49%%{opacity:1}50%%,100%%{opacity:0}}"
-        ".cur{animation:blink 1.1s steps(1) infinite}"
+        "@keyframes blink{0%%,50%%{opacity:1}51%%,100%%{opacity:0}}"
+        ".cur{animation:blink 1.1s infinite}"
         "</style>" % FONT
     )
     frame = ('<rect x="0.5" y="0.5" width="%d" height="%d" rx="12" fill="%s" stroke="%s"/>'

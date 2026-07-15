@@ -78,17 +78,20 @@ def main():
     p.append('<svg xmlns="http://www.w3.org/2000/svg" width="%d" height="%d" viewBox="0 0 %d %d" '
              'role="img" aria-label="Animated ASCII portrait of Vrathik Shenoy">'
              % (width, height, width, height))
+    # NOTE: one single format string (implicit concatenation, no '+') so every
+    # '%%' collapses to a literal '%'. Building this with '+' left '%%' intact in
+    # the non-formatted pieces, producing invalid '0%%' keyframe selectors that
+    # silently killed the breathe + blink animations.
     p.append(
         "<style>"
-        "text{font-family:ui-monospace,'JetBrains Mono',Menlo,Consolas,monospace;font-size:%dpx;"
-        "white-space:pre}" % FONT
-        + "@keyframes rowin{from{opacity:0}to{opacity:1}}"
-        + ".r{opacity:0;animation:rowin %ss ease-out forwards}" % ROW_DUR
-        + "@keyframes breathe{0%%,100%%{opacity:1}50%%{opacity:0.62}}"
-        + ".breath{animation:breathe 4.8s ease-in-out infinite;animation-delay:%ss}" % round(breathe_start, 2)
-        + "@keyframes blink{0%%,49%%{opacity:1}50%%,100%%{opacity:0}}"
-        + ".cur{animation:blink 1.1s steps(1) infinite}"
-        + "</style>"
+        "text{font-family:ui-monospace,'JetBrains Mono',Menlo,Consolas,monospace;font-size:%dpx;white-space:pre}"
+        "@keyframes rowin{from{opacity:0}to{opacity:1}}"
+        ".r{opacity:0;animation:rowin %ss ease-out forwards}"
+        "@keyframes breathe{0%%,100%%{opacity:1}50%%{opacity:0.6}}"
+        ".breath{animation:breathe 4.5s ease-in-out infinite;animation-delay:%ss}"
+        "@keyframes blink{0%%,50%%{opacity:1}51%%,100%%{opacity:0}}"
+        ".cur{animation:blink 1.1s infinite}"
+        "</style>" % (FONT, ROW_DUR, round(breathe_start, 2))
     )
     p.append('<rect x="0.5" y="0.5" width="%d" height="%d" rx="8" fill="%s" stroke="#30363D"/>'
              % (width - 1, height - 1, BG))
