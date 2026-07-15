@@ -1,85 +1,66 @@
 # AI.OS // Identity Terminal
 
-<p align="center">
+```
+[guest@ai-os ~]$ ./boot_system --verbose
+```
+
+<p align="left">
   <img src="assets/boot.gif" alt="AI.OS Boot Sequence" width="440" />
 </p>
 
-<p align="center">
-  <b>Initializing Human Intelligence...</b><br/>
-  <b>Loading Artificial Intelligence...</b><br/>
-  <b>Welcome, Vrathik Shenoy.</b>
-</p>
-
----
-
-## ⌨️ Command Console
-*Type a command to jump to a directory node, or scroll to proceed:*
-
-<p align="center">
-  <code><b>[guest@ai-os ~]$</b></code> 
-  <a href="#identity-dashboard"><code>cat about.md</code></a> &nbsp;|&nbsp;
-  <a href="#featured-projects"><code>ls projects/</code></a> &nbsp;|&nbsp;
-  <a href="#tech-arsenal"><code>sysctl hardware</code></a> &nbsp;|&nbsp;
-  <a href="#live-system-monitor"><code>top -d 1</code></a> &nbsp;|&nbsp;
-  <a href="#terminal-footer"><code>exit</code></a>
-</p>
-
----
-
-<h2 id="identity-dashboard">👤 Section 2 & 3 — Animated ASCII Portrait & Dashboard</h2>
-
-<p align="center">
-  <table border="0" cellpadding="10" cellspacing="0" align="center">
-    <tr style="border: none; background: transparent;">
-      <td valign="top" style="border: none; background: transparent; padding-right: 20px;">
-        <img src="assets/portrait.gif" alt="Vrathik Shenoy ASCII Portrait" width="360" style="border: 2px solid #30363d; border-radius: 6px;" />
-      </td>
-      <td valign="top" style="border: none; background: transparent;">
-        <pre>
-╭────────────────────────────────────────────╮
-│ <a href="https://github.com/vrathikshenoy"><b>Vrathik Shenoy</b></a>                            │
-├────────────────────────────────────────────┤
-│ <b>Role</b>      AI Engineer                      │
-│ <b>Focus</b>     Computer Vision & GenAI           │
-│ <b>Stack</b>     PyTorch | CUDA | OpenCV          │
-│ <b>Mission</b>   Build useful AI products         │
-│ <b>Status</b>    Building Wearify                 │
-│ <b>System</b>    <!-- SYNC_TIME_START -->System Sync: 2026-07-15 11:24:01 UTC (Active)<!-- SYNC_TIME_END -->  │
-╰────────────────────────────────────────────╯
-        </pre>
-        <h3>Current Mission</h3>
-        <blockquote>
-          <i>"Bridging research and production. Accelerating vision-language models, diffusion frameworks, and building immersive, next-gen consumer products."</i>
-        </blockquote>
-      </td>
-    </tr>
-  </table>
-</p>
-
----
-
-<h2 id="ai-radar">📊 Section 4 — AI Radar</h2>
-
 ```
-Computer Vision
-████████████████████████████████████████ 92%
-
-Diffusion Models
-████████████████████████████████      80%
-
-LLMs & VLMs
-████████████████████████████          70%
-
-Backend / MLOps
-████████████████████████              60%
-
-AI Research
-████████████████████████████████      80%
+SYSTEM BOOT SUCCESSFUL.
+INITIALIZING IDENTITY DEPLOYMENT...
 ```
 
----
+```
+[guest@ai-os ~]$ ./render_user_portrait --color=cyan
+```
 
-<h2 id="neural-network">🧠 Section 5 — Neural Network Connectors</h2>
+<p align="left">
+  <img src="assets/portrait.gif" alt="Vrathik Shenoy ASCII Portrait" width="360" style="border: 1px solid #30363d; border-radius: 4px;" />
+</p>
+
+```
+[guest@ai-os ~]$ cat identity/profile.json
+```
+
+```json
+{
+  "user": "Vrathik Shenoy",
+  "role": "AI Engineer",
+  "focus": "Computer Vision & Generative AI",
+  "stack": ["PyTorch", "CUDA", "OpenCV"],
+  "mission": "Build useful AI products",
+  "status": "Building Wearify",
+  "last_sync": "<!-- SYNC_TIME_START -->System Sync: 2026-07-15 11:28:13 UTC (Active)<!-- SYNC_TIME_END -->"
+}
+```
+
+```
+[guest@ai-os ~]$ cat identity/mission.txt
+```
+> *Initializing Human Intelligence...*
+> *Loading Artificial Intelligence...*
+> *Welcome, Vrathik Shenoy.*
+>
+> "Bridging the gap between cutting-edge computer vision research and production. Actively optimizing latent diffusion models, accelerating tensor computations, and engineering virtual try-on ecosystems."
+
+```
+[guest@ai-os ~]$ ./view_radar_chart.py --skills
+```
+
+```
+Computer Vision  ██████████████████████████████ 92%
+Diffusion        ████████████████████████       80%
+LLMs / VLMs      ██████████████████             60%
+Backend / MLOps  ██████████████                 50%
+AI Research      ████████████████████████       80%
+```
+
+```
+[guest@ai-os ~]$ query_neural_net --render
+```
 
 ```
    [ Input Data ]
@@ -99,144 +80,140 @@ AI Research
   [ Featured Projects ]
 ```
 
----
-
-<h2 id="current-experiments">🧪 Section 6 — Current Experiments</h2>
-
-- **✓ Wearify** — Virtual Try-On for e-commerce.
-- **✓ Multi-view Virtual Try-On** — Generating realistic multi-angle garment fits.
-- **✓ Vision Language Models** — Aligning text-image understanding for downstream tasks.
-- **✓ Diffusion Optimization** — Fine-tuning and accelerating text-to-image pipelines.
-- **✓ AI Startup** — Turning research into viable consumer software products.
-
----
-
-<h2 id="mission-timeline">⏳ Section 7 — Mission Timeline</h2>
-
 ```
-  2022 ──► Started AI Journey (Exploring Deep Learning basics)
-            │
-            ▼
-  2023 ──► Specialized in Computer Vision (OpenCV, classical ML, CNN architectures)
-            │
-            ▼
-  2024 ──► Advanced AI Research & Generative Modeling (Diffusion, PyTorch, CUDA acceleration)
-            │
-            ▼
-  2025 ──► Wearify & VTON Systems (Developing deep generative try-on engines)
-            │
-            ▼
-  2026 ──► Building scalable AI Products (Current active node)
+[guest@ai-os ~]$ cat identity/experiments.log
 ```
 
----
-
-<h2 id="featured-projects">📁 Section 8 — Featured Projects</h2>
-
-<table border="0" cellpadding="10" cellspacing="0" width="100%">
-  <tr style="border: none; background: transparent;">
-    <td width="50%" valign="top" style="border: none; background: transparent;">
-      <pre>
-┌──────────────────────────────────────────┐
-│ <b>PROJECT_001 // Wearify</b>                   │
-├──────────────────────────────────────────┤
-│ <b>Status</b>     <font color="#3FB950">● RUNNING</font>                     │
-│ <b>Type</b>       Virtual Try-On System         │
-│ <b>Stack</b>      Python | PyTorch | CUDA       │
-│            Next.js                       │
-├──────────────────────────────────────────┤
-│ Engine for realistic clothing transfer   │
-│ from garment image onto person image.    │
-│                                          │
-│ <a href="https://github.com/vrathikshenoy/wearify-claude"><b>Access Repository ──►</b></a>                    │
-└──────────────────────────────────────────┘
-      </pre>
-    </td>
-    <td width="50%" valign="top" style="border: none; background: transparent;">
-      <pre>
-┌──────────────────────────────────────────┐
-│ <b>PROJECT_002 // Gemini AI Try-On</b>          │
-├──────────────────────────────────────────┤
-│ <b>Status</b>     <font color="#39D0FF">● COMPLETED</font>                   │
-│ <b>Type</b>       Multi-modal Try-On App        │
-│ <b>Stack</b>      Python | Gemini API | Bun     │
-│            TailwindCSS                   │
-├──────────────────────────────────────────┤
-│ Virtual Try-on workflow powered by       │
-│ Google Gemini Multimodal APIs.           │
-│                                          │
-│ <a href="https://github.com/vrathikshenoy/gemini-ai-tryon"><b>Access Repository ──►</b></a>                    │
-└──────────────────────────────────────────┘
-      </pre>
-    </td>
-  </tr>
-</table>
-
----
-
-<h2 id="tech-arsenal">🛠️ Section 9 — Tech Arsenal</h2>
-
 ```
-Neural Stack & Engine
-Python       ████████████████████████████████████████ 100%
-PyTorch      ████████████████████████████████████████ 100%
-CUDA         ████████████████████████████████         80%
-OpenCV       ████████████████████████████████████     90%
-Transformers ████████████████████████████             70%
-Next.js      ████████████████████                     50%
+✓ Wearify (Active)
+✓ Multi-view Virtual Try-On (Research)
+✓ Vision Language Models (Fine-Tuning)
+✓ Diffusion Optimization (Triton / CUDA)
+✓ AI Startup (Incubating)
 ```
 
----
+```
+[guest@ai-os ~]$ timeline --list --vertical
+```
 
-<h2 id="live-system-monitor">🖥️ Section 10 — Live System Monitor</h2>
-<p align="center">
+```
+  2022 ──► Started AI Journey
+            │
+            ▼
+  2023 ──► Computer Vision Specialization
+            │
+            ▼
+  2024 ──► Deep Generative Research (Diffusion & PyTorch)
+            │
+            ▼
+  2025 ──► Wearify & VTON Engine Development
+            │
+            ▼
+  2026 ──► Scale AI Products (Active Node)
+```
+
+```
+[guest@ai-os ~]$ ls -la projects/
+```
+
+```
+total 2
+drwxr-xr-x  2 guest guest 4096 Jul 15 16:50 .
+drwxr-xr-x  6 guest guest 4096 Jul 15 16:50 ..
+
+┌──────────────────────────────────────────────────────────┐
+│ PROJECT_001 // Wearify                                   │
+├──────────────────────────────────────────────────────────┤
+│ Status     ● RUNNING (Active Production)                 │
+│ Type       Virtual Try-On System                         │
+│ Stack      Python | PyTorch | CUDA | Next.js             │
+├──────────────────────────────────────────────────────────┤
+│ High-fidelity clothing transfer from garment images      │
+│ onto target person models.                               │
+│                                                          │
+│ Repository: https://github.com/vrathikshenoy/wearify     │
+└──────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────┐
+│ PROJECT_002 // Gemini AI Try-On                          │
+├──────────────────────────────────────────────────────────┤
+│ Status     ● COMPLETED (Archived)                        │
+│ Type       Multi-modal Try-On Application                │
+│ Stack      Python | Gemini API | Bun | Tailwind          │
+├──────────────────────────────────────────────────────────┤
+│ Virtual try-on pipeline powered by Google Gemini         │
+│ Multimodal models and agentic workflows.                 │
+│                                                          │
+│ Repository: https://github.com/vrathikshenoy/gemini-vton │
+└──────────────────────────────────────────────────────────┘
+```
+
+```
+[guest@ai-os ~]$ sysctl -a hardware.engine
+```
+
+```
+Neural Stack
+
+Python       ██████████████████████████ 100%
+PyTorch      ██████████████████████████ 100%
+CUDA         ████████████████████       80%
+OpenCV       ██████████████████████     90%
+Transformers ████████████████           65%
+Next.js      ████████████               50%
+```
+
+```
+[guest@ai-os ~]$ top -d 1 -b --limit=5
+```
+
+<p align="left">
   <img src="assets/ai_terminal.svg" alt="AI.OS Live System Monitor" width="440" />
 </p>
 
----
+```
+[guest@ai-os ~]$ curl -s https://api.github.com/users/vrathikshenoy/stats
+```
 
-<h2 id="github-stats">📈 Section 11 — GitHub Statistics</h2>
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=vrathikshenoy&show_icons=true&theme=dark&bg_color=0d1117&title_color=58a6ff&text_color=c9d1d9&icon_color=39d0ff&border_color=30363d&hide_title=false" alt="Vrathik's GitHub Stats" width="420" />
+<p align="left">
+  <img src="https://github-readme-stats.vercel.app/api?username=vrathikshenoy&show_icons=true&theme=dark&bg_color=0d1117&title_color=58a6ff&text_color=c9d1d9&icon_color=39d0ff&border_color=30363d&hide_title=false" alt="Vrathik's GitHub Stats" width="410" />
   &nbsp;&nbsp;
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=vrathikshenoy&layout=compact&theme=dark&bg_color=0d1117&title_color=58a6ff&text_color=c9d1d9&border_color=30363d" alt="Vrathik's Top Languages" width="300" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=vrathikshenoy&layout=compact&theme=dark&bg_color=0d1117&title_color=58a6ff&text_color=c9d1d9&border_color=30363d" alt="Vrathik's Top Languages" width="290" />
 </p>
 
----
+```
+[guest@ai-os ~]$ cat research/feed.md
+```
 
-<h2 id="research-feed">📚 Section 12 — Research Feed</h2>
+```
+Latest Research Directions:
+• Virtual Try-On (VTON) — Drape deformation & synthesis.
+• Latent Diffusion Models — Parameter efficiency & inference speed.
+• Fashion AI — High-precision parsing & body landmark alignment.
+• Vision Transformers — Attention maps in diffusion guidance.
+• Multi-modal Systems — Alignment of VLMs for commercial usage.
+```
 
-- 🌟 **Virtual Try-On (VTON)** — Diffusion-based models for high-fidelity clothing drape estimation.
-- 🌟 **Diffusion Models** — Latent diffusion architecture optimization, memory reductions, and fast inference.
-- 🌟 **Fashion AI** — Semantic segmentations, pose estimations, and garment warping pipelines.
-- 🌟 **Vision Transformers** — Cross-attention mapping in text-to-image synthesis models.
-- 🌟 **Multi-modal Systems** — Large Language Models conditioned on complex visual scene contexts.
-
----
-
-<h2 id="philosophy">🧠 Section 13 — Philosophy</h2>
+```
+[guest@ai-os ~]$ python3 -c "import life; life.run()"
+```
 
 <!-- QUOTE_START -->
 ```
-"while(alive) { learn(); build(); share(); repeat(); }"
+"A computer would deserve to be called intelligent if it could deceive a human into believing that it was human." — Alan Turing
 ```
 <!-- QUOTE_END -->
 
----
-
-<h2 id="terminal-footer">🛑 Terminal Footer</h2>
-
 ```
-Connection closed.
-Have a nice day, traveler.
-
 [guest@ai-os ~]$ exit
 logout
+
+Connection closed.
+Have a nice day, traveler.
 
 [Process completed]
 ```
 
-<p align="center">
+<p align="left">
   <b>█</b>
 </p>
