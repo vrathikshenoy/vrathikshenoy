@@ -39,21 +39,23 @@ def build_svg(stats, fortune):
 
     # (label, value, data-key) — label None = blank spacer row
     info = [
-        ("OS", 'Arch, Kubuntu, Windows', None),
-        ("Host", " Generative AI", None),
-        ("Kernel", "6.13-neural-cuda", None),
+        ("OS", "Arch, Kubuntu, Windows", None),
+        ("Host", "Generative AI", None),
+        ("Kernel", "6.19-neural-cuda", None),
         ("Uptime", stats["uptime"], "uptime"),
-        ("Shell", "zsh · python 3.12", None),
+        ("Shell", "zsh · bash", None),
+        ("Terminal", "ghostty · kitty", None),
         ("Role", "AI Engineer", None),
-        ("Editor", "Neovim · Zed · VS Code", None),
         (None, "", None),
-        ("Stack", "PyTorch · OpenCV  · Diffusers · NextJs" , None),
+        ("CPU", "99% — compiling...", None),
+        ("RAM", "consumed by Chrome", None),
+        ("GPU", "thinking...", None),
+        ("Sleep", "404 Not Found", None),
+        (None, "", None),
+        ("Stack", "PyTorch · OpenCV · Diffusers · Next.js", None),
         ("Focus", "Latent Diffusion · VTON · VLMs", None),
         ("Projects", "wearify ● · City-360 ● · LLM-Agent ●", None),
-        (None, "", None),
-        ("GitHub", "github.com/vrathikshenoy", None),
-        ("LinkedIn", "in/vrathik-shenoy", None),
-        ("Email", "shenoyvrathik@gmail.com", None),
+        # ponytail: contact rows dropped — the README link bar already repeats them
     ]
 
     p = []           # svg body pieces
@@ -90,8 +92,16 @@ def build_svg(stats, fortune):
     )
     ends.append(info_x + 34 * CW)
 
-    # Fortune line + inline blinking cursor (tracks length after CI swaps it)
+    # Shell session: a failed command, its error, then the rotating fortune.
     y += LH + LH // 2
+    p.append('<text class="i" x="%d" y="%d" fill="%s">❯ <tspan fill="%s">rm -rf bugs</tspan></text>'
+             % (info_x, y, CYAN, TXT))
+    y += LH
+    p.append('<text class="i" x="%d" y="%d" fill="%s">zsh: permission denied</text>'
+             % (info_x, y, "#FF5F56"))
+
+    # Fortune line + inline blinking cursor (tracks length after CI swaps it)
+    y += LH
     p.append('<text class="i" x="%d" y="%d" fill="%s">❯ '
              '<tspan data-k="fortune" fill="%s">%s</tspan>'
              '<tspan class="cur" fill="%s"> █</tspan></text>'
@@ -111,9 +121,9 @@ def build_svg(stats, fortune):
 
     head = (
         '<svg xmlns="http://www.w3.org/2000/svg" width="%d" height="%d" viewBox="0 0 %d %d" '
-        'role="img" aria-label="vrathik@aios neofetch panel: AI Engineer in Computer Vision and '
-        'Generative AI; stack PyTorch, CUDA, OpenCV, Diffusers; GitHub %d repos %d stars %d followers; '
-        'contact github.com/vrathikshenoy, in/vrathik-shenoy, shenoyvrathik@gmail.com">'
+        'role="img" aria-label="vrathik@shenoy neofetch panel: AI Engineer in Computer Vision and '
+        'Generative AI; stack PyTorch, OpenCV, Diffusers, Next.js; focus latent diffusion, VTON, VLMs; '
+        'GitHub %d repos %d stars %d followers">'
         % (width, height, width, height, stats["repos"], stats["stars"], stats["followers"])
     )
     style = (

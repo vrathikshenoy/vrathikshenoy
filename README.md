@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="assets/portrait.svg" height="430" alt="Animated ASCII portrait of Vrathik Shenoy — reveals top-to-bottom, then holds and breathes" />
+<img src="assets/portrait.svg" height="460" alt="Animated ASCII portrait of Vrathik Shenoy — reveals top-to-bottom, then holds and breathes" />
 &nbsp;&nbsp;
-<img src="assets/neofetch.svg" height="430" alt="vrathik@aios neofetch panel — AI Engineer in Computer Vision & Generative AI. Stack: PyTorch, CUDA, OpenCV, Diffusers. Building Wearify. GitHub: 32 repos, 11 stars, 2 followers." />
+<img src="assets/neofetch.svg" height="460" alt="vrathik@shenoy neofetch panel — AI Engineer in Computer Vision & Generative AI. Stack: PyTorch, OpenCV, Diffusers, Next.js. Focus: latent diffusion, VTON, VLMs. Building Wearify." />
 
 [**Website**](https://vrathik.vercel.app) &nbsp;·&nbsp;
 [**GitHub**](https://github.com/vrathikshenoy) &nbsp;·&nbsp;
