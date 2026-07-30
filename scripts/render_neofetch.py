@@ -54,7 +54,7 @@ def build_svg(stats, fortune):
         (None, "", None),
         ("Stack", "PyTorch · OpenCV · Diffusers · Next.js", None),
         ("Focus", "Latent Diffusion · VTON · VLMs", None),
-        ("Projects", "wearify ● · City-360 ● · LLM-Agent ●", None),
+        ("Projects", "wearify ●  City-360 ●  LLM-Agent ", None),
         # ponytail: contact rows dropped — the README link bar already repeats them
     ]
 
