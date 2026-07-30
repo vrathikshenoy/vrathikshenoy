@@ -9,6 +9,7 @@ This panel is a single self-contained SVG (no markdown code blocks => no GitHub
 'copy' buttons). Live fields carry <tspan data-k="..."> anchors so
 scripts/update_stats.py can refresh them daily in CI (stdlib only, no photo).
 """
+
 import os
 import random
 
@@ -30,7 +31,12 @@ LABEL_W = 104
 
 
 def esc(s):
-    return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
+    return (
+        s.replace("&", "&amp;")
+        .replace("<", "&lt;")
+        .replace(">", "&gt;")
+        .replace('"', "&quot;")
+    )
 
 
 def build_svg(stats, fortune):
@@ -58,25 +64,40 @@ def build_svg(stats, fortune):
         # ponytail: contact rows dropped — the README link bar already repeats them
     ]
 
-    p = []           # svg body pieces
-    ends = []        # rightmost pixel of each drawn line (for width calc)
+    p = []  # svg body pieces
+    ends = []  # rightmost pixel of each drawn line (for width calc)
 
     # Header
     hy = PAD + FONT
-    p.append('<text class="i" x="%d" y="%d" font-weight="bold">'
-             '<tspan fill="%s">vrathik</tspan><tspan fill="%s">@shenoy</tspan></text>'
-             % (info_x, hy, ACCENT, CYAN))
+    p.append(
+        '<text class="i" x="%d" y="%d" font-weight="bold">'
+        '<tspan fill="%s">vrathik</tspan><tspan fill="%s">@shenoy</tspan></text>'
+        % (info_x, hy, ACCENT, CYAN)
+    )
     ends.append(info_x + 12 * CW)
-    p.append('<text class="i" x="%d" y="%d" fill="%s">%s</text>' % (info_x, hy + LH, DIM, "─" * 24))
+    p.append(
+        '<text class="i" x="%d" y="%d" fill="%s">%s</text>'
+        % (info_x, hy + LH, DIM, "─" * 24)
+    )
     ends.append(info_x + 24 * CW)
 
     # Info rows
     y = hy + LH * 2
     for label, value, key in info:
         if label is not None and value:
-            p.append('<text class="i" x="%d" y="%d" fill="%s">%s</text>' % (info_x, y, ACCENT, esc(label)))
-            inner = '<tspan data-k="%s">%s</tspan>' % (key, esc(value)) if key else esc(value)
-            p.append('<text class="i" x="%d" y="%d" fill="%s">%s</text>' % (val_x, y, TXT, inner))
+            p.append(
+                '<text class="i" x="%d" y="%d" fill="%s">%s</text>'
+                % (info_x, y, ACCENT, esc(label))
+            )
+            inner = (
+                '<tspan data-k="%s">%s</tspan>' % (key, esc(value))
+                if key
+                else esc(value)
+            )
+            p.append(
+                '<text class="i" x="%d" y="%d" fill="%s">%s</text>'
+                % (val_x, y, TXT, inner)
+            )
             ends.append(val_x + len(value) * CW)
         y += LH
 
@@ -87,34 +108,56 @@ def build_svg(stats, fortune):
         '<tspan fill="%s">Repos </tspan><tspan data-k="repos" fill="%s">%d</tspan>'
         '<tspan fill="%s">   Stars </tspan><tspan data-k="stars" fill="%s">%d</tspan>'
         '<tspan fill="%s">   Followers </tspan><tspan data-k="followers" fill="%s">%d</tspan>'
-        '</text>' % (info_x, y, DIM, GREEN, stats["repos"], DIM, CYAN, stats["stars"],
-                     DIM, PURPLE, stats["followers"])
+        "</text>"
+        % (
+            info_x,
+            y,
+            DIM,
+            GREEN,
+            stats["repos"],
+            DIM,
+            CYAN,
+            stats["stars"],
+            DIM,
+            PURPLE,
+            stats["followers"],
+        )
     )
     ends.append(info_x + 34 * CW)
 
     # Shell session: a failed command, its error, then the rotating fortune.
     y += LH + LH // 2
-    p.append('<text class="i" x="%d" y="%d" fill="%s">❯ <tspan fill="%s">rm -rf bugs</tspan></text>'
-             % (info_x, y, CYAN, TXT))
+    p.append(
+        '<text class="i" x="%d" y="%d" fill="%s">❯ <tspan fill="%s">rm -rf bugs</tspan></text>'
+        % (info_x, y, CYAN, TXT)
+    )
     y += LH
-    p.append('<text class="i" x="%d" y="%d" fill="%s">zsh: permission denied</text>'
-             % (info_x, y, "#FF5F56"))
+    p.append(
+        '<text class="i" x="%d" y="%d" fill="%s">zsh: permission denied</text>'
+        % (info_x, y, "#FF5F56")
+    )
 
     # Fortune line + inline blinking cursor (tracks length after CI swaps it)
     y += LH
-    p.append('<text class="i" x="%d" y="%d" fill="%s">❯ '
-             '<tspan data-k="fortune" fill="%s">%s</tspan>'
-             '<tspan class="cur" fill="%s"> █</tspan></text>'
-             % (info_x, y, CYAN, DIM, esc(fortune), CYAN))
+    p.append(
+        '<text class="i" x="%d" y="%d" fill="%s">❯ '
+        '<tspan data-k="fortune" fill="%s">%s</tspan>'
+        '<tspan class="cur" fill="%s"> █</tspan></text>'
+        % (info_x, y, CYAN, DIM, esc(fortune), CYAN)
+    )
     # reserve width for the LONGEST fortune — CI swaps these daily and the
     # panel width is fixed at generation time.
     ends.append(info_x + (max(len(f) for f in us.FORTUNES) + 4) * CW)
 
     # Palette blocks
     y += LH
-    for j, col in enumerate([BG, ACCENT, CYAN, GREEN, PURPLE, "#FFBD2E", "#FF5F56", TXT]):
-        p.append('<rect x="%d" y="%d" width="28" height="15" rx="3" fill="%s" stroke="%s"/>'
-                 % (info_x + j * 34, y - 12, col, BORDER))
+    for j, col in enumerate(
+        [BG, ACCENT, CYAN, GREEN, PURPLE, "#FFBD2E", "#FF5F56", TXT]
+    ):
+        p.append(
+            '<rect x="%d" y="%d" width="28" height="15" rx="3" fill="%s" stroke="%s"/>'
+            % (info_x + j * 34, y - 12, col, BORDER)
+        )
 
     width = int(max(ends) + PAD)
     height = int(y + PAD)
@@ -122,9 +165,17 @@ def build_svg(stats, fortune):
     head = (
         '<svg xmlns="http://www.w3.org/2000/svg" width="%d" height="%d" viewBox="0 0 %d %d" '
         'role="img" aria-label="vrathik@shenoy neofetch panel: AI Engineer in Computer Vision and '
-        'Generative AI; stack PyTorch, OpenCV, Diffusers, Next.js; focus latent diffusion, VTON, VLMs; '
+        "Generative AI; stack PyTorch, OpenCV, Diffusers, Next.js; focus latent diffusion, VTON, VLMs; "
         'GitHub %d repos %d stars %d followers">'
-        % (width, height, width, height, stats["repos"], stats["stars"], stats["followers"])
+        % (
+            width,
+            height,
+            width,
+            height,
+            stats["repos"],
+            stats["stars"],
+            stats["followers"],
+        )
     )
     style = (
         "<style>"
@@ -133,10 +184,12 @@ def build_svg(stats, fortune):
         ".cur{animation:blink 1.1s steps(1) infinite}"
         "</style>" % FONT
     )
-    frame = ('<rect x="0.5" y="0.5" width="%d" height="%d" rx="12" fill="%s" stroke="%s"/>'
-             % (width - 1, height - 1, PANEL, BORDER)
-             + '<rect x="9.5" y="9.5" width="%d" height="%d" rx="8" fill="%s" stroke="%s"/>'
-             % (width - 19, height - 19, BG, BORDER))
+    frame = (
+        '<rect x="0.5" y="0.5" width="%d" height="%d" rx="12" fill="%s" stroke="%s"/>'
+        % (width - 1, height - 1, PANEL, BORDER)
+        + '<rect x="9.5" y="9.5" width="%d" height="%d" rx="8" fill="%s" stroke="%s"/>'
+        % (width - 19, height - 19, BG, BORDER)
+    )
     return head + style + frame + "".join(p) + "</svg>"
 
 
